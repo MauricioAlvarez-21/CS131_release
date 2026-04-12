@@ -31,7 +31,7 @@ def conv_nested(image, kernel):
     ### YOUR CODE HERE
     for i in range(Hi):
         for j in range(Wi):
-            out[i,j]=100
+            out[i,j]=image[i,j]
     ### END YOUR CODE
 
     return out

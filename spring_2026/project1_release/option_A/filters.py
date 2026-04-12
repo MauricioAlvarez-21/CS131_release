@@ -32,6 +32,7 @@ def conv_nested(image, kernel):
     for i in range(Hi):
         for j in range(Wi):
             out[i,j]=image[i,j]
+            assert(2==1)
     ### END YOUR CODE
 
     return out

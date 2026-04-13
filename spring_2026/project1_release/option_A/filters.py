@@ -33,6 +33,7 @@ def conv_nested(image, kernel):
     for i in range(Hi):
         for j in range(Wi):
             out[i,j]=image[i,j]
+            print("hi")
     ### END YOUR CODE
 
     return out

@@ -29,6 +29,12 @@ def conv_nested(image, kernel):
     out = np.zeros((Hi, Wi))
 
     ### YOUR CODE HERE
+    f_kernel = np.zeros((Hk,Wk))
+    for a in range(Hk):
+        for b in range(Wk):
+            f_kernel[Hk-a-1, Wk-b-1] = kernel[a,b]
+    kernel=f_kernel
+
     for m in range (Hi):
         for n in range (Wi):
             for i in  range(Hk):

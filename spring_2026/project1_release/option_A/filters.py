@@ -35,12 +35,12 @@ def conv_nested(image, kernel):
     #             for j in range(Wk):
     #                 if (m-i>0) and (n-j>0):
     #                     out[m,n] += kernel[i,j]*image[m-i,n-j]
-    for m in range (Hk):
-        for n in range(Wk):
-            for i in range(Hi):
-                for j in range(Wi):
-                    if(m-i>0) and (n-j)>0:
-                        out[m,n]+=image[i,j]*kernel[m-i,j-j]
+    for i in range(Hi):
+        for j in range(Wi):
+            for m in range(Hk):
+                for n in range(Wk):
+                    if (m-i>=0) and (n-j>=0):
+                        out[i,j] += image[i,j]*kernel[m-i,n-j]
 
     ### END YOUR CODE
 

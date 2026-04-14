@@ -122,7 +122,7 @@ def cross_correlation(f, g):
 
     out = None
     ### YOUR CODE HERE
-    pass
+    out = conv_fast(f,g)
     ### END YOUR CODE
 
     return out

@@ -144,7 +144,8 @@ def zero_mean_cross_correlation(f, g):
 
     out = None
     ### YOUR CODE HERE
-    pass
+    zero_mean_g = g - np.mean(g)
+    out = conv_fast(f,np.flip(zero_mean_g))
     ### END YOUR CODE
 
     return out

@@ -29,12 +29,30 @@ def conv_nested(image, kernel):
     out = np.zeros((Hi, Wi))
 
     ### YOUR CODE HERE
-    for m in range (Hi):
-        for n in range (Wi):
-            for i in  range(Hk):
+    #semi working code!
+    # for m in range (Hi):
+    #     for n in range (Wi):
+    #         for i in  range(Hk):
+    #             for j in range(Wk):
+    #                 if (m-i>0) and (n-j>0):
+    #                     out[m,n] += kernel[i,j]*image[m-i,n-j]
+
+    # Calculate the center offset of the kernel
+    ho = Hk // 2
+    wo = Wk // 2
+
+    for m in range(Hi):
+        for n in range(Wi):
+            for i in range(Hk):
                 for j in range(Wk):
-                    if (m-i>0) and (n-j>0):
-                        out[m,n] += kernel[i,j]*image[m-i,n-j]
+                    # 1. Flip the kernel indexing (Convolution logic: Hk-1-i)
+                    # 2. Offset the image index so kernel center aligns with m, n
+                    im_m = m + ho - i
+                    im_n = n + wo - j
+                    
+                    # Check boundaries to prevent indexing errors
+                    if 0 <= im_m < Hi and 0 <= im_n < Wi:
+                        out[m, n] += kernel[i, j] * image[im_m, im_n]
 
     ### END YOUR CODE
 

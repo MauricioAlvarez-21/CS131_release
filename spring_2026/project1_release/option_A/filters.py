@@ -96,7 +96,13 @@ def conv_fast(image, kernel):
     out = np.zeros((Hi, Wi))
 
     ### YOUR CODE HERE
-    pass
+    pad_img = zero_pad(image, Hk//2, Wk//2)
+    flip_k = np.flip(kernel)
+    for i in range(Hi):
+        for j in range (Wi):
+            window = pad_img[i : i + Hk, j : j + Wk]
+            out[i,j] = np.sum(window*flip_k)
+
     ### END YOUR CODE
 
     return out

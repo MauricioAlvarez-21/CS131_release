@@ -169,7 +169,17 @@ def normalized_cross_correlation(f, g):
 
     out = None
     ### YOUR CODE HERE
-    pass
+    Hi, Wi = f.shape
+    Hk, Wk = g.shape
+    out = np.zeros((Hi, Wi))
+    pad_f = zero_pad(f, Hk//2, Wk//2)
+    norm_g = (g-np.mean(g))/np.std(g)
+
+    for i in range(Hi):
+        for j in range (Wi):
+            window = pad_f[i : i + Hk, j : j + Wk]
+            window_norm = (window-np.mean(window))/np.std(window)
+            out[i,j] = np.sum(window_norm*norm_g)
     ### END YOUR CODE
 
     return out
